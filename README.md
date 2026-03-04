@@ -6,8 +6,12 @@ Para a configuração e instalação do projeto, siga os passos abaixo:
 ```bash
 yarn install
 ```
+## 2. Caso tenha URL específica para o Flask, configure a variável de ambiente `FLASK_URL` no arquivo `.env`:
+```env
+FLASK_URL=http://127.0.0.1:5000
+```
 
-## 2. Rode o projeto em modo de desenvolvimento
+## 3. Rode o projeto em modo de desenvolvimento
 
 ```bash
 yarn start:dev

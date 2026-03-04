@@ -2,6 +2,8 @@ import { IIdentificationRepository } from "../interfaces/IIdentificationReposito
 import axios from 'axios';
 import FormData from 'form-data';
 
+require('dotenv').config({ path: '.env' });
+
 export class IdentificationRepository implements IIdentificationRepository{
     constructor(){}
 
@@ -13,7 +15,7 @@ async identificate(file: Express.Multer.File): Promise<any> {
         console.log(file)
         form.append('imagem', file.buffer, file.originalname);
 
-        const response = await axios.post('http://localhost:5000/', form, {
+        const response = await axios.post(process.env.FLASK_URL || 'http://localhost:5000/', form, {
             headers: {
                 ...form.getHeaders(),
             },

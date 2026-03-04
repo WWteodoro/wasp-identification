@@ -2,6 +2,8 @@ import axios from 'axios';
 import FormData from 'form-data';
 import { IIdentificationRepository } from "../interfaces/IIdentificationRepository";
 
+require('dotenv').config({ path: '.env' });
+
 export class IdentificateService {
     constructor(private repo: IIdentificationRepository) {}
 
@@ -26,7 +28,7 @@ export class IdentificateService {
 
             console.log("5. Enviando para Python...");
 
-            const response = await axios.post('http://localhost:5000/', form, {
+            const response = await axios.post(process.env.FLASK_URL || 'http://localhost:5000/', form, {
                 headers: {
                     ...form.getHeaders(),
                 },
